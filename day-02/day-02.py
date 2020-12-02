@@ -1,21 +1,22 @@
 import time
+import re
 
 start_time = time.time()
 print()
 print(" Day 2 ".center(48, '-'))
 
-lines = [x.rstrip() for x in open("input-02.txt").readlines()]
-
 valid_passwords_1 = 0
 valid_passwords_2 = 0
-for line in lines:
-    line = line.split(" ")
-    min, max = [int(x) for x in line[0].split('-')]
-    char = line[1][0]
-    password = line[2]
+
+for line in open("input-02.txt").readlines():
+    match = re.search(r'^(\d+)-(\d+) (\w): (\w+)', line)
+    min, max, char, password = match.groups()
+    min = int(min)
+    max = int(max)
 
     policy_1 = min <= password.count(char) <= max
     policy_2 = (password[min-1] == char) ^ (password[max-1] == char)
+    
     if policy_1:
         valid_passwords_1 += 1
     if policy_2:
