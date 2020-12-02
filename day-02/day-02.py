@@ -14,7 +14,7 @@ for line in lines:
     char = line[1][0]
     password = line[2]
 
-    policy_1 = password.count(char) >= min and password.count(char) <= max
+    policy_1 = min <= password.count(char) <= max
     policy_2 = (password[min-1] == char) ^ (password[max-1] == char)
     if policy_1:
         valid_passwords_1 += 1
