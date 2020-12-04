@@ -1,9 +1,9 @@
 
 area = [x.rstrip() for x in open("input-03.txt").readlines()]
-slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
+slopes = [(1,), (3,), (5,), (7,), (1, 2)]
 
 
-def check_slope(right, down, area=area):
+def check_slope(right, down=1, area=area):
     trees = 0
     current_col = 0
     width = len(area[0])
