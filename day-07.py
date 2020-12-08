@@ -18,6 +18,9 @@ for line in lines:
         if bag not in contained_in:
             contained_in[bag] = []
 
+        if colour not in contains:
+            contains[colour] = []
+
         if colour not in contained_in:
             contained_in[colour] = []
         contained_in[colour].append(bag)
@@ -34,4 +37,13 @@ def bfs(colour):
                 queue.insert(0, neighbour)
     return visited
 
-print(len(bfs("shiny gold")))
+
+def bags_to_fill(colour):
+    bags = 0
+    for sub_bag in contains[colour]:
+        bags += sub_bag[1] * (1 + bags_to_fill(sub_bag[0]))
+    return bags
+
+
+print("Part 1:", len(bfs("shiny gold")))
+print("Part 2:", bags_to_fill("shiny gold"))
