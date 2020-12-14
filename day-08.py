@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 
 instructions = [(x[:3], x.rstrip()[4:]) for x in open("input-08.txt").readlines()]
 
@@ -73,3 +75,6 @@ while not found:
         else:
             print('unknown operation')
             break
+
+end_time = round((time.time() - start_time) * 1000, 2)
+print(f"Solved in: {end_time}ms" )
