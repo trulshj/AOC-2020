@@ -1,3 +1,5 @@
+import time
+start_time = time.time()
 
 numbers = [int(x.rstrip()) for x in open("input-09.txt").readlines()]
 
@@ -44,3 +46,6 @@ for i in range(len(numbers)):
         j += 1
     if found:
         break
+
+end_time = round((time.time() - start_time) * 1000, 2)
+print(f"Solved in: {end_time}ms" )
