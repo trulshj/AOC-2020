@@ -21,17 +21,13 @@ for bus in in_service:
 print("Part 1:", bus_to_catch * lowest_waiting_time)
 
 
-buses2 = {bus: idx for idx, bus in enumerate(buses) if bus != 'x'}
+timestamp = 0
+running_product = 1
 
-# found = False
-# i = int(buses[0])
-# while not found:
-#     found = True
-#     for bus, idx in buses2.items():
-#         offset = (int(idx) + i) % int(bus)
-#         if offset != 0:
-#             found = False
-#             i += int(buses[0])
-#             break 
-# print(i)
-
+for idx, bus in enumerate(buses):
+    if bus == 'x':
+        continue
+    while (timestamp + idx) % int(bus) != 0:
+        timestamp += running_product
+    running_product *= int(bus)
+print("Part 2:", timestamp)
